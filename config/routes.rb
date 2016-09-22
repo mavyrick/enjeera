@@ -4,8 +4,16 @@ Rails.application.routes.draw do
 resources :users, only: [:new, :create]
 
 resources :sessions, only: [:new, :create] do
-   delete :destroy, on: :collection
- end
+  delete :destroy, on: :collection
+end
+
+resources :company_users, only: [:new, :create]
+
+resources :company_sessions, only: [:new, :create] do
+  delete :destroy, on: :collection
+end
+
+
 
 resources :home
 
