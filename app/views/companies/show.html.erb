@@ -1,4 +1,8 @@
-<h1><%= @company.title %></h1>
+<div>
+  <h1><%= @company.title %></h1>
+</div>
 <div>
   <%= @company.description %>
 </div>
+
+<%= link_to "Edit Company Profile", edit_company_path(@company) %>

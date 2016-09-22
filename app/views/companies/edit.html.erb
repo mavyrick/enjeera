@@ -1,0 +1,19 @@
+<h1>Edit Company Profile</h1>
+
+<%= @company.errors.full_messages.join(", ") %>
+<%= form_for @company do |f| %>
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+  <div>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+</div>
+  <%= f.label :image %>
+  <%= f.file_field :attachment %>
+<div>
+<%= f.submit %>
+
+<% end %>
