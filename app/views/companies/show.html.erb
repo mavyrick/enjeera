@@ -8,7 +8,7 @@
 <%= link_to "Edit Company Profile", edit_company_path(@company) %>
 
 <% if @applying.present? && @applying.persisted? %>
-  <%= link_to "Unapply", company_applying_path(@company, @applying), method: :delete %>
+  <%= link_to "Applied", company_applying_path(@company, @applying), method: :delete %>
 <% else %>
   <%= link_to "Apply", company_applyings_path(@company), method: :post %>
 <% end %>
