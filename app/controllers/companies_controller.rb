@@ -24,6 +24,7 @@ class CompaniesController < ApplicationController
 
   def show
     @company = Company.find params[:id]
+    @applying = @company.applying_for(current_user)
   end
 
   def edit
@@ -35,6 +36,10 @@ class CompaniesController < ApplicationController
     @company.update params.require(:company).permit([:title, :description, :attachment])
     flash[:notice] = "Company profile editted successfully"
     redirect_to company_path(@company)
+  end
+
+  def applying_for(user)
+    applyings.find_by_user_id(user)
   end
 
 end

@@ -17,7 +17,9 @@ end
 
 resources :home
 
-resources :companies
+resources :companies do
+  resources :applyings, only: [:create, :destroy]
+end
 
 root "home#index"
 

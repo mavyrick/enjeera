@@ -1,0 +1,2 @@
+module ApplyingsHelper
+end
