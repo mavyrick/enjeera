@@ -18,7 +18,4 @@ class ApplyingsController < ApplicationController
    applying.destroy
    redirect_to applying.company, notice: "Application Cancelled"
  end
-
- def new
- end
 end
