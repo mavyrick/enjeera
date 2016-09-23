@@ -2,6 +2,8 @@ class CompanyUser < ApplicationRecord
 
   has_secure_password
 
+  # has_one :company
+
   validates :company_name, presence: true
   validates :company_name, uniqueness: true
 

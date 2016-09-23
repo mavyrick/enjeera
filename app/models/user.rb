@@ -2,6 +2,11 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
+  has_one :company
+
+  has_many :applyings, dependent: :destroy
+  has_many :companies_applied_to, through: :applyings, source: :company
+
   validates :first_name, presence: true
 
   validates :last_name, presence: true

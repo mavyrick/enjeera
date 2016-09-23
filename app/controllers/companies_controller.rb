@@ -15,7 +15,7 @@ class CompaniesController < ApplicationController
     @company = Company.create company_params
 
     if @company.save
-      flash[:notice] = "Project created successfully"
+      flash[:notice] = "Company created successfully"
       redirect_to company_path(@company)
     else
       render :new

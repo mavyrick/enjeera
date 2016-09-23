@@ -8,7 +8,7 @@ class CompanyUsersController < ApplicationController
   def create
     @company_user = CompanyUser.new company_user_params
     @company = Company.new
-    @company.title = params["company_user"]["company_name"]
+    @company.title = params[:company_user][:company_name]
     @company.save
     if @company_user.save
       session[:company_user_id] = @company_user.id
