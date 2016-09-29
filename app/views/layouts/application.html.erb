@@ -48,7 +48,8 @@
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Link</a></li>
+        <li><%= link_to "Login", new_session_path %></li>
+        <li><%= link_to "Sign Up", new_user_path %></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -74,17 +75,22 @@
   <%= link_to "Logout", sessions_path, method: :delete,
              data: {confirm: "are you sure you want to log out?"}%>
 
-  <% elsif company_user_signed_in? %>
-    Welcome <%= current_company_user.full_name %>,
+  <% if current_user.company_admin %>
+    |
+    <%= link_to "Company Application Questions", application_questions_path %>
+  <% end %>
+
+  <%# elsif company_user_signed_in? %>
+    <!-- Welcome <%#= current_company_user.full_name %>, -->
     <%#= link_to "Edit Company Profile", companies_path %>
-    <%= link_to "Logout", company_sessions_path, method: :delete,
+    <%#= link_to "Logout", company_sessions_path, method: :delete,
            data: {confirm: "are you sure you want to log out?"}%>
 
   <% else %>
-    <%= link_to "Student Login", new_session_path %>
-    <%= link_to "Student Sign Up", new_user_path %>
-    <%= link_to "Company Login", new_company_session_path %>
-    <%= link_to "Company Sign Up", new_company_user_path %>
+    <%= link_to "Login", new_session_path %>
+    <%= link_to "Sign Up", new_user_path %>
+    <%#= link_to "Company Login", new_company_session_path %>
+    <%#= link_to "Company Sign Up", new_company_user_path %>
   <% end %>
 
   <hr>

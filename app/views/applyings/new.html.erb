@@ -1,0 +1,19 @@
+<h1>Apply</h1>
+
+<% if @applying.errors.any? %>
+  <ul>
+    <% @applying.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for [@company, @applying] do |f| %>
+
+  <% @company.application_questions.each do |question| %>
+    <%= render "applyings/question", question: question, f: f %>
+  <% end %>
+
+
+  <%= f.submit %>
+<% end %>
