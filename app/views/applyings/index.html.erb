@@ -1,0 +1,11 @@
+<h1>Applications</h1>
+
+<%# @company.applyings.each do |applying| %>
+    <p><%#= applying.answer_field %></p>
+<%# end %>
+
+<% @applyings.each do |app| %>
+  <%#= link_to app.answer_field, company_path(app) %>
+  <%= app.answer_field %>
+  <hr>
+<% end %>

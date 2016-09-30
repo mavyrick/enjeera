@@ -8,11 +8,19 @@
   </ul>
 <% end %>
 
-<%= form_for [@company, @application_question], url: :company_application_questions do |f| %>
-<!-- <%#= form_for new_company_application_question_path(@application_question) do |f| %> -->
-  <div id="question_field">
-    <%= f.label "Question 1" %>
-    <%= f.text_field :question %>
-  </div>
-  <%= f.submit %>
+<%= form_for @company, url: application_questions_path do |f| %>
+  <br/>
+
+  <%= f.nested_fields_for :application_questions do |ff| %>
+    <%= ff.remove_nested_fields_link %>
+    <%= ff.text_field :question %>
+  <% end %>
+
+  <br/>
+
+  <%= f.add_nested_fields_link :application_questions %>
+
+  <br/>
+
+  <%= f.submit "Update Questions" %>
 <% end %>

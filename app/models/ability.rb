@@ -6,6 +6,10 @@ class Ability
   can :manage, Company do |company|
     company.user == user
   end
+
+  # can :manage, Applying do |applying|
+  #   company.user == user
+  # end
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)

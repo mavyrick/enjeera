@@ -10,7 +10,7 @@ class ApplicationQuestionsController < ApplicationController
     @company = current_user.company
     @company.update(company_params)
     flash[:notice] = "Company application questions updated!"
-    redirect_to application_questions_path
+    redirect_to company_path(@company)
   end
 
   private

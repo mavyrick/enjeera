@@ -1,0 +1,18 @@
+<h1>Create Application Questions</h1>
+
+<% if @application_question.errors.any? %>
+  <ul>
+    <% @application_question.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for [@company, @application_question], url: :company_application_questions do |f| %>
+<!-- <%#= form_for new_company_application_question_path(@application_question) do |f| %> -->
+  <div id="question_field">
+    <%= f.label "Question 1" %>
+    <%= f.text_field :question %>
+  </div>
+  <%= f.submit %>
+<% end %>

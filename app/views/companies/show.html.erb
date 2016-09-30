@@ -8,10 +8,13 @@
   <%= render partial: "users/show", locals: {user: @company.user} %>
 </div>
 
-<%= link_to "Edit Company Profile", edit_company_path(@company) %>
+<% if can? :edit, @company %>
+  <%= link_to "Edit Company Profile", edit_company_path(@company) %>
+<% end %>
 
 <% if @applying.present? && @applying.persisted? %>
-  <%= link_to "Unapply", company_applying_path(@company, @applying), method: :delete %>
+  <div id="applied">Applied</div>
+  <%# link_to "Unapply", company_applying_path(@company, @applying), method: :delete %>
 <% else %>
   <%= link_to "Apply", company_applyings_path(@company), method: :post %>
 <% end %>
