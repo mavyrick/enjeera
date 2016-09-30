@@ -34,6 +34,8 @@ gem 'bootstrap-sass', '~> 3.3.6'
 
 gem 'nested_form_fields'
 
+gem 'cancancan', '~> 1.15'
+
 # gem 'nested_form', '~> 0.3.2'
 
 # gem 'cocoon', '~> 1.2', '>= 1.2.9'
