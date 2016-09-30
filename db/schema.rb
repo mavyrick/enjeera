@@ -10,16 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160923015906) do
+ActiveRecord::Schema.define(version: 20160928235934) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "application_answers", force: :cascade do |t|
+    t.integer  "applying_id"
+    t.text     "answer"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["applying_id"], name: "index_application_answers_on_applying_id", using: :btree
+  end
+
+  create_table "application_questions", force: :cascade do |t|
+    t.string   "question"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "company_id"
+    t.integer  "applying_id"
+    t.index ["applying_id"], name: "index_application_questions_on_applying_id", using: :btree
+    t.index ["company_id"], name: "index_application_questions_on_company_id", using: :btree
+  end
+
   create_table "applyings", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "company_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.text     "answer_field"
     t.index ["company_id"], name: "index_applyings_on_company_id", using: :btree
     t.index ["user_id"], name: "index_applyings_on_user_id", using: :btree
   end
@@ -56,9 +75,13 @@ ActiveRecord::Schema.define(version: 20160923015906) do
     t.datetime "updated_at",      null: false
     t.boolean  "site_admin"
     t.boolean  "company_admin"
+    t.string   "company_name"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
+  add_foreign_key "application_answers", "applyings"
+  add_foreign_key "application_questions", "applyings"
+  add_foreign_key "application_questions", "companies"
   add_foreign_key "applyings", "companies"
   add_foreign_key "applyings", "users"
   add_foreign_key "companies", "company_users"

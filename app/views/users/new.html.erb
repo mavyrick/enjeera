@@ -10,6 +10,15 @@
 
 <%= form_for @user do |f| %>
   <div>
+    <%= f.label :user_type %>
+    <%= f.select :company_admin,
+        :selection => ["Applicant", "Company"] %>
+  </div>
+  <div id="company_name">
+    <%= f.label :company_name %>
+    <%= f.text_field :company_name %>
+  </div>
+  <div>
     <%= f.label :first_name %>
     <%= f.text_field :first_name %>
   </div>
@@ -31,3 +40,26 @@
   </div>
   <%= f.submit %>
 <% end %>
+
+<script>
+   function show_hide_company() {
+     if ($("#user_company_admin :selected").text() == "Company") {
+       $("#company_name").show();
+     }
+     else {
+       $("#company_name").hide();
+     }
+   }
+
+  show_hide_company();
+
+  $("#user_company_admin").on('change', function(){
+    show_hide_company();
+    // if ($("#user_company_admin :selected").text() == "Company") {
+    //   $("#company_name").show();
+    // }
+    // else {
+    //   $("#company_name").hide();
+    // }
+  })
+</script>

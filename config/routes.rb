@@ -18,8 +18,11 @@ end
 resources :home
 
 resources :companies do
-  resources :applyings, only: [:create, :destroy]
+  resources :applyings, only: [:new, :create, :destroy]
+  #resources :application_questions, only: [:new, :create, :destroy]
 end
+get '/application_questions' => "application_questions#index"
+patch '/application_questions' => "application_questions#create"
 
 root "home#index"
 
