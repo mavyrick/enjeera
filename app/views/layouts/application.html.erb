@@ -33,12 +33,11 @@
         <li><a href="#">Link</a></li>
         <li><a href="#">Link</a></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Actions <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><%#= link_to "Application Questions", company_application_question_path %></li>
             <li><a href="#">Edit Company Profile</a></li>
             <li><a href="#">Edit Application Questions</a></li>
-            <li><a href="#">Separated link</a></li>
             <li><a href="#">One more separated link</a></li>
           </ul>
         </li>
@@ -63,7 +62,7 @@
 
   <% if current_user.company_admin %>
     |
-    <%= link_to "Company Application Questions", application_questions_path %>
+    <%#= link_to "Company Application Questions", company_application_questions_path %>
   <% end %>
 
   <%# elsif company_user_signed_in? %>

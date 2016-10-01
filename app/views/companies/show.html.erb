@@ -5,6 +5,8 @@
   <%= @company.description %>
 </div>
 <div>
+  <%= "#{@company.user.first_name} #{@company.user.last_name}"  %>
+<div>
   <%= render partial: "users/show", locals: {user: @company.user} %>
 </div>
 
@@ -16,5 +18,5 @@
   <div id="applied">Applied</div>
   <%# link_to "Unapply", company_applying_path(@company, @applying), method: :delete %>
 <% else %>
-  <%= link_to "Apply", company_applyings_path(@company), method: :post %>
+  <%= link_to "Apply", new_company_applying_path(@company) %>
 <% end %>

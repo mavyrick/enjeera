@@ -1,18 +1,25 @@
-<h1>Create Application Questions</h1>
+<h1>All Application Questions for <%= @company.title %></h1>
 
-<%= form_for @company, url: application_questions_path do |f| %>
-  <br/>
+<h3>All questions</h3>
 
-  <%= f.nested_fields_for :application_questions do |ff| %>
-    <%= ff.remove_nested_fields_link %>
-    <%= ff.text_field :question %>
-  <% end %>
-
-  <br/>
-
-  <%= f.add_nested_fields_link :application_questions %>
-
-  <br/>
-
-  <%= f.submit "Update Questions" %>
+<% @company.application_questions.reverse_each do |a_q| %>
+ <p><%= a_q.question %></p>
 <% end %>
+
+<%= render "question_form", company: @company%>
+<%#= form_for @application_question, url: application_questions_path do |f| %>
+  <!-- <br/> -->
+
+  <%#= f.nested_fields_for :application_questions do |ff| %>
+    <%#= ff.remove_nested_fields_link %>
+    <%#= ff.text_field :question %>
+  <%# end %>
+
+  <!-- <br/> -->
+
+  <%#= f.add_nested_fields_link :application_questions %>
+
+  <!-- <br/> -->
+
+  <%#= f.submit "Update Questions" %>
+ <%# end %>

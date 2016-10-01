@@ -18,6 +18,10 @@
     <%= f.label :company_name %>
     <%= f.text_field :company_name %>
   </div>
+  <div id="company_description">
+    <%#= f.label :company_description %>
+    <%#= f.text_field :company_description %>
+  </div>
   <div>
     <%= f.label :first_name %>
     <%= f.text_field :first_name %>
@@ -45,9 +49,11 @@
    function show_hide_company() {
      if ($("#user_company_admin :selected").text() == "Company") {
        $("#company_name").show();
+       $("#company_description").show();
      }
      else {
        $("#company_name").hide();
+       $("#company_description").hide();
      }
    }
 

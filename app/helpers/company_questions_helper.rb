@@ -1,0 +1,2 @@
+module CompanyQuestionsHelper
+end

@@ -88,6 +88,7 @@ GEM
     mini_portile2 (2.1.0)
     minitest (5.9.0)
     multi_json (1.12.1)
+    nested_form (0.3.2)
     nested_form_fields (0.8)
       coffee-rails (>= 3.2.1)
       jquery-rails
@@ -184,6 +185,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   listen (~> 3.0.5)
+  nested_form (~> 0.3.2)
   nested_form_fields
   pg (~> 0.18)
   pry

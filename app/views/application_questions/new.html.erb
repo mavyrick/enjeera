@@ -7,20 +7,20 @@
     <% end %>
   </ul>
 <% end %>
+<%= render "question_form", company: @company%>
+<%#= form_for @application_question, url: company_application_questions_path(@company) do |f| %>
+  <!-- <br/> -->
 
-<%= form_for @company, url: application_questions_path do |f| %>
-  <br/>
+  <%#= f.nested_fields_for :application_questions do |ff| %>
+    <%#= ff.remove_nested_fields_link %>
+    <%#= ff.text_field :question %>
+  <%# end %>
 
-  <%= f.nested_fields_for :application_questions do |ff| %>
-    <%= ff.remove_nested_fields_link %>
-    <%= ff.text_field :question %>
-  <% end %>
+  <!-- <br/> -->
 
-  <br/>
+  <%#= f.add_nested_fields_link :application_questions %>
 
-  <%= f.add_nested_fields_link :application_questions %>
+  <!-- <br/> -->
 
-  <br/>
-
-  <%= f.submit "Update Questions" %>
-<% end %>
+  <%#= f.submit "Update Questions" %>
+<%# end %>

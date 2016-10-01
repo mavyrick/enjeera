@@ -21,9 +21,11 @@ class ApplyingsController < ApplicationController
  def create
    applying = current_user.applyings.new
    company = Company.find params[:company_id]
+  #  applying_params = params.require(:applying).permit(:answer_field)
+   @Applying = Applying.create[:answer_field]
    applying.company = company
    if applying.save
-     redirect_to new_company_applying_path, notice: "Applied!"
+     redirect_to companies_path, notice: "Applied!"
    else
      redirect_to company, alert: "Can't Apply!"
    end

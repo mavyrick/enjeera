@@ -1,0 +1,17 @@
+<%= form_for [company, company.application_questions.new], url: company_application_questions_path(company) do |f| %>
+  <br/>
+<%= f.label :question %>
+<%= f.text_field :question %>
+  <%#= f.nested_fields_for :application_questions do |ff| %>
+    <%#= ff.remove_nested_fields_link %>
+    <%#= ff.text_field :question %>
+  <%# end %>
+
+  <!-- <br/> -->
+
+  <%#= f.add_nested_fields_link :application_questions %>
+
+  <!-- <br/> -->
+
+  <%= f.submit "Submit Questions" %>
+<% end %>
