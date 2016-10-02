@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
     when "Applicant"
       return new_user
     when "Company"
-      Company.create(title: other_params[:company_name], description: nil, user: new_user)
+      Company.create(title: other_params[:company_name], description: other_params[:company_description], user: new_user)
       new_user.update(company_admin: true)
       return new_user
     end

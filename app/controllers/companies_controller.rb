@@ -38,6 +38,12 @@ class CompaniesController < ApplicationController
     redirect_to company_path(@company)
   end
 
+  # def destroy
+  #   company = Company.find params[:id]
+  #   company.destroy
+  #   redirect_to company_application_question_path
+  # end
+
   def applying_for(user)
     applyings.find_by_user_id(user)
   end

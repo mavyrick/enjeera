@@ -4,6 +4,9 @@
 
 <% @company.application_questions.reverse_each do |a_q| %>
  <p><%= a_q.question %></p>
+ <%= link_to "Delete", company_application_question_path(@company, a_q),
+                       method: :delete,
+                       data: {confirm: "Are you sure?"} %>
 <% end %>
 
 <%= render "question_form", company: @company%>

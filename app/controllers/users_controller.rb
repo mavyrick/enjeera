@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     end
 
     def other_params
-      params.require(:user).permit(:company_name, :company_admin)
+      params.require(:user).permit(:company_name, :company_admin, :company_description)
     end
 
 end
