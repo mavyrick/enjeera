@@ -3,7 +3,9 @@ class ApplicationQuestionsController < ApplicationController
 
   def index
     @company = current_user.company
-    @questions = @company.application_questions
+    @application_questions = @company.application_questions
+    @application_questions = ApplicationQuestion.order(:position)
+    # @application_questions = ApplicationQuestion.all
   end
 
   def new
@@ -36,6 +38,13 @@ class ApplicationQuestionsController < ApplicationController
     @application_question = ApplicationQuestion.find params[:id]
     @application_question.destroy
     redirect_to company_application_questions_path(@application_question), notice: "Question Deleted"
+  end
+
+  def sort
+    params[:application_question].each_with_index do |id, index|
+      ApplicationQuestion.find(id).update!(position: index + 1)
+    end
+    head :ok
   end
 
   private

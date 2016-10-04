@@ -32,7 +32,9 @@ resources :home
 resources :companies do
   resources :applyings, only: [:new, :create, :destroy, :index]
   # resources :company_questions
-  resources :application_questions
+  resources :application_questions do
+    post :sort, on: :collection
+  end
 end
 
 # get '/applying/:id' => 'applying#show'

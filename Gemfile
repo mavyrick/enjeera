@@ -38,6 +38,12 @@ gem 'cancancan', '~> 1.15'
 
 gem 'nested_form', '~> 0.3.2'
 
+gem 'acts_as_list', '~> 0.8.2'
+
+gem 'jquery-ui-rails'
+
+gem 'therubyracer', '~> 0.12.2'
+
 # gem 'cocoon', '~> 1.2', '>= 1.2.9'
 
 group :development, :test do
