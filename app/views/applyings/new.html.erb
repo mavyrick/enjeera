@@ -1,4 +1,4 @@
-<h1>Apply</h1>
+<h1>Apply to <%= @company.title %></h1>
 
 <% if @applying.errors.any? %>
   <ul>
@@ -10,7 +10,7 @@
 
 <%= form_for [@company, @applying] do |f| %>
 
-  <% @company.application_questions.reverse_each do |q| %>
+  <% @company.application_questions.each do |q| %>
     <%= render "applyings/question", question: q, f: f %>
   <% end %>
 

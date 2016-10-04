@@ -2,17 +2,18 @@
 
 <h3>All questions</h3>
 
-<ul id="application_questions">
-<% @company.application_questions.reverse_each do |a_q| %>
+<div id="application_questions">
+<% @company.application_questions.order(position: :asc).each do |application_question| %>
  <!-- <li><%#= a_q.question %></li> -->
- <li id="a_q_<%= a_q.id %>"><%= a_q.question %></li>
+ <h4 id="application_question_<%= application_question.id %>"><%= application_question.question %><%= link_to " Delete", company_application_question_path(@company, application_question), method: :delete, data: {confirm: "Are you sure?"} %></h4>
 
- <%= link_to "Edit", company_application_question_path(@company, a_q) %>
- <%= link_to "Delete", company_application_question_path(@company, a_q),
-                       method: :delete,
-                       data: {confirm: "Are you sure?"} %>
 <% end %>
-</ul>
+
+<script type='text/javascript'>
+  var companyId = <%= @company.id %>
+</script>
+
+</div>
 
 <%= render "question_form", company: @company%>
 <%#= form_for @application_question, url: application_questions_path do |f| %>

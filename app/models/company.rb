@@ -1,5 +1,7 @@
 class Company < ApplicationRecord
 
+  mount_uploader :picture, AvatarUploader
+
   belongs_to :user
 
   has_many :applyings, dependent: :destroy
@@ -10,6 +12,9 @@ class Company < ApplicationRecord
   def applying_for(user)
     applyings.find_by_user_id(user)
   end
+
+  geocoded_by :address
+  after_validation :geocode
 
   # accepts_nested_attributes_for(:application_questions)
 

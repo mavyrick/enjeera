@@ -2,18 +2,22 @@
 
 <%= @company.errors.full_messages.join(", ") %>
 <%= form_for @company do |f| %>
+<div>
+  <%= f.label "Profile Picture" %>
+  <%= f.file_field :picture %>
+</div>
   <div>
-    <%= f.label :title %>
+    <%= f.label "Company Name" %>
     <%= f.text_field :title %>
   </div>
   <div>
-    <%= f.label :description %>
+    <%= f.label "Tag Line" %>
+    <%= f.text_field :tag_line %>
+  </div>
+  <div>
+    <%= f.label "About Us" %>
     <%= f.text_area :description %>
   </div>
-</div>
-  <%= f.label :image %>
-  <%= f.file_field :attachment %>
-<div>
 <%= f.submit %>
 
 <% end %>

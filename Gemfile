@@ -44,6 +44,16 @@ gem 'jquery-ui-rails'
 
 gem 'therubyracer', '~> 0.12.2'
 
+gem 'carrierwave'
+
+gem 'mini_magick'
+
+gem "geocoder"
+
+gem 'underscore-rails'
+
+gem 'gmaps4rails'
+
 # gem 'cocoon', '~> 1.2', '>= 1.2.9'
 
 group :development, :test do

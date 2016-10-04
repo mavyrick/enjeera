@@ -1,7 +1,7 @@
 <h1>Companies</h1>
 <% @companies.each do |comp| %>
   <%= link_to comp.title, company_path(comp) %>
-  <%= comp.description %>
+  <%= comp.tag_line %>
   <hr>
 <% end %>
 

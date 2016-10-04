@@ -1,11 +1,24 @@
+<% if @company.picture.blank? == false %>
+<div>
+  <%= image_tag @company.picture.thumb.url %>
+</div>
+<% end %>
+
 <div>
   <h1><%= @company.title %></h1>
 </div>
+
 <div>
-  <%= @company.description %>
+  <%= @company.tag_line %>
+</div>
+
+
+
+<div>
+  About Us: <%= @company.description %>
 </div>
 <div>
-  <%= "#{@company.user.first_name} #{@company.user.last_name}"  %>
+  <%#= "#{@company.user.first_name} #{@company.user.last_name}"  %>
 <div>
   <%= render partial: "users/show", locals: {user: @company.user} %>
 </div>

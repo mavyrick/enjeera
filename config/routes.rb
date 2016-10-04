@@ -25,8 +25,6 @@ resources :company_sessions, only: [:new, :create] do
   delete :destroy, on: :collection
 end
 
-
-
 resources :home
 
 resources :companies do
@@ -42,7 +40,6 @@ end
 # get '/application_questions' => "application_questions#index"
 # patch '/application_questions' => "application_questions#create"
 # post '/application_question/new' => "application_questions#new"
-
 
 root "home#index"
 

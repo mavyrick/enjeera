@@ -17,3 +17,5 @@
 //= require nested_form_fields
 //= require_tree .
 //= require jquery-ui
+//= require underscore
+//= require gmaps/google
