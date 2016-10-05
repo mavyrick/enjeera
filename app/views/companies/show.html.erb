@@ -12,8 +12,6 @@
   <%= @company.tag_line %>
 </div>
 
-
-
 <div>
   About Us: <%= @company.description %>
 </div>
@@ -32,4 +30,52 @@
   <%# link_to "Unapply", company_applying_path(@company, @applying), method: :delete %>
 <% else %>
   <%= link_to "Apply", new_company_applying_path(@company) %>
+<% end %>
+
+<% if @company.include_map == true %>
+<h2>Company Location</h2>
+
+<div>
+  <div id="map" style='height: 400px;'></div>
+</div>
+
+<script type="text/javascript">
+
+handler = Gmaps.build('Google');
+handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+  markers = handler.addMarkers([
+    // map.setZoom(15);
+    {
+      "lat": '<%= @company.latitude %>',
+      "lng": '<%= @company.longitude %>',
+      // "picture": {
+      //   "url": "http://people.mozilla.com/~faaborg/files/shiretoko/firefoxIcon/firefox-32.png",
+      //   "width":  32,
+      //   "height": 32
+      // },
+      "infowindow": '<%= @company.title %>'
+
+    }
+  ]);
+  handler.bounds.extendWith(markers);
+  handler.fitMapToBounds();
+  handler.getMap().setZoom(14);
+});
+
+  // // markers = handler.addMarkers(<%=raw @hash.to_json %>);
+  //
+  // handler = Gmaps.build('Google');
+  // handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+  //   markers = handler.addMarkers([
+  //     {
+  //       "lat": <%= @company.latitude %>,
+  //       "lng": <%= @company.longitude %>,
+  //       "infowindow": "<%= @company.title %>"
+  //     }
+  //   ]);
+  //   handler.bounds.extendWith(markers);
+  //   handler.fitMapToBounds();
+  // });
+</script>
+
 <% end %>

@@ -10,8 +10,8 @@
 
 <%= form_for [@company, @applying] do |f| %>
 
-  <% @company.application_questions.each do |q| %>
-    <%= render "applyings/question", question: q, f: f %>
+  <% @company.application_questions.each do |question| %>
+    <%= render "applyings/question", question: question, f: f %>
   <% end %>
 
 

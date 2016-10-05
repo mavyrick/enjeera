@@ -10,9 +10,9 @@
 
 <%= form_for @user do |f| %>
   <div>
-    <%= f.label :user_type %>
+    <%= f.label :type %>
     <%= f.select :company_admin,
-        :selection => ["Applicant", "Company"] %>
+        :selection => ["User", "Company"] %>
   </div>
   <div id="company_name">
     <%= f.label :company_name %>
@@ -21,6 +21,10 @@
   <div id="company_description">
     <%= f.label :company_description %>
     <%= f.text_field :company_description %>
+  </div>
+  <div id="user_name">
+    <%= f.label :user_name %>
+    <%= f.text_field :user_name %>
   </div>
   <div>
     <%= f.label :first_name %>
@@ -50,10 +54,12 @@
      if ($("#user_company_admin :selected").text() == "Company") {
        $("#company_name").show();
        $("#company_description").show();
+       $("#user_name").hide();
      }
      else {
        $("#company_name").hide();
        $("#company_description").hide();
+       $("#user_name").show();
      }
    }
 

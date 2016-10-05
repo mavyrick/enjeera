@@ -24,7 +24,13 @@ class CompaniesController < ApplicationController
 
   def show
     @company = Company.find params[:id]
+    @companies = Company.all
     @applying = @company.applying_for(current_user)
+    @hash = Gmaps4rails.build_markers(@companies) do |company, marker|
+      marker.lat company.latitude
+      marker.lng company.longitude
+end
+
   end
 
   def edit
@@ -51,7 +57,7 @@ class CompaniesController < ApplicationController
   private
 
     def company_params
-      params.require(:company).permit(:title, :tag_line, :description, :picture)
+      params.require(:company).permit(:title, :tag_line, :description, :picture, :include_map, :latitude, :longitude)
     end
 
 end

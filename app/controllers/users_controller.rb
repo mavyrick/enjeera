@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
 
+  def index
+    @Users = User.order(created_at: :desc).page(params[:page]).per(10)
+  end
+
+
   def new
       @user = User.new
     end
@@ -9,6 +14,7 @@ class UsersController < ApplicationController
         session[:user_id] = @user.id
         redirect_to root_path, notice: "Logged In!"
       else
+        @user = User.new
         render :new
       end
     end
@@ -16,7 +22,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :email,
+      params.require(:user).permit(:user_name, :first_name, :last_name, :email,
                                                 :password, :password_confirmation)
     end
 

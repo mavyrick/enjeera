@@ -15,9 +15,58 @@
     <%= f.text_field :tag_line %>
   </div>
   <div>
-    <%= f.label "About Us" %>
+    <%= f.label "Company Description" %>
     <%= f.text_area :description %>
+  </div>
+  <div id="include_map">
+    <%= f.label "Show location on profile?" %>
+    <%= f.select :include_map,
+        :selection => [["Yes", true], ["No", false]] %>
+    <%#= check_box_tag(:include_map) %>
+    <%#= label_tag(:include_map, "Include Map?") %>
+  </div>
+  <!-- <div id="include_map"> -->
+      <%#= f.label "Include Map?" %>
+      <%#= f.radio_button :include_map, 'Yes' %>
+      <%#= f.label :include_map, 'Yes', :value => 'Yes' %>
+      <%#= f.radio_button :include_map, 'No' %>
+      <%#= f.label :include_map, 'No', :value => 'No' %>
+    <!-- </div> -->
+  <div id="latitude">
+    <%= f.label "Latitude (for map)" %>
+    <%= f.text_field :latitude %>
+  </div>
+  <div id="longitude">
+    <%= f.label "Longitude (for map)" %>
+    <%= f.text_field :longitude %>
   </div>
 <%= f.submit %>
 
 <% end %>
+
+<script>
+
+   function show_hide_coordinates() {
+     if ($("#include_map :selected").text() == "Yes") {
+       $("#latitude").show();
+       $("#longitude").show();
+     }
+     else {
+       $("#latitude").hide();
+       $("#longitude").hide();
+     }
+   }
+
+  show_hide_coordinates();
+
+  $("#include_map").on('change', function(){
+    show_hide_coordinates();
+    // if ($("#user_company_admin :selected").text() == "Company") {
+    //   $("#company_name").show();
+    // }
+    // else {
+    //   $("#company_name").hide();
+    // }
+  })
+
+</script>

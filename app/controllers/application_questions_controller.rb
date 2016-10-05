@@ -2,7 +2,10 @@ class ApplicationQuestionsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @company = current_user.company
+    @company = Company.find params[:company_id]
+    if current_user.company != @company
+      redirect_to root_path, notice: "access denied" and return
+    end
     @application_questions = @company.application_questions
     @application_questions = ApplicationQuestion.order(:position)
     # @application_questions = ApplicationQuestion.all
@@ -13,8 +16,11 @@ class ApplicationQuestionsController < ApplicationController
     @application_question = @company.application_questions.new
   end
 
+  def show
+  end
+
   def create
-    @company = current_user.company
+    @company = Company.find params[:company_id]
     @application_question = @company.application_questions.new application_question_params
     if @application_question.save
       redirect_to company_application_questions_path(@company), notice: "Company application questions created!"

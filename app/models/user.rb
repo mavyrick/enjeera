@@ -21,13 +21,14 @@ class User < ActiveRecord::Base
   def self.setup(user_params, other_params)
     new_user = create(user_params)
     case other_params[:company_admin]
-    when "Applicant"
+    when "User"
       return new_user
     when "Company"
       Company.create(title: other_params[:company_name], description: other_params[:company_description], user: new_user)
       new_user.update(company_admin: true)
       return new_user
     end
+    # new_user
   end
 
 end
