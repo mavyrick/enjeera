@@ -54,6 +54,29 @@ gem 'underscore-rails'
 
 gem 'gmaps4rails'
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+gem 'oauth2', '~> 1.2'
+
+gem "linkedin-oauth2", "~> 1.0"
+
+gem 'omniauth-linkedin-oauth2'
+
+gem 'omniauth'
+
+gem 'omniauth-linkedin'
+
 # gem 'cocoon', '~> 1.2', '>= 1.2.9'
 
 group :development, :test do

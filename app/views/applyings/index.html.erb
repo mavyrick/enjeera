@@ -1,11 +1,28 @@
-<h1>Applications</h1>
+<h1>Application Question Responses</h1>
 
 <%# @company.applyings.each do |applying| %>
     <p><%#= applying.answer_field %></p>
 <%# end %>
 
-<% @applyings.each do |app| %>
   <%#= link_to app.answer_field, company_path(app) %>
-  <%= app.answer_field %>
-  <hr>
+
+<% @applyings.each do |app| %>
+<%# 100.times do |num| %>
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingThree">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          This is a tagline.
+        </a>
+      </h4>
+    </div>
+    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+      <div class="panel-body">
+        <%= app.answer_field %>
+      </div>
+    </div>
+  </div>
+</div>
 <% end %>
+<%# end %>
