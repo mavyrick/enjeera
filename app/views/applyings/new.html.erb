@@ -8,12 +8,26 @@
   </ul>
 <% end %>
 
-<%= form_for [@company, @applying] do |f| %>
+<%= form_tag(company_applyings_path(@company), method: :post) do %>
 
   <% @company.application_questions.each do |question| %>
-    <%= render "applyings/question", question: question, f: f %>
+    <%= question.question %>
+    <%= text_area_tag "answer_#{question.id}" %>
+    <br/>
   <% end %>
 
-
-  <%= f.submit %>
+  <%= submit_tag %>
 <% end %>
+
+<%# form_for [@company, @applying] do |f| %>
+
+  <%# @company.application_questions.each do |question| %>
+  <%# = f.fields_for :application_answers do |ff| %>
+    <%# = render "question", question: question, ff: ff %>
+  <%# end %>
+
+<%# end %>
+
+
+  <%# f.submit %>
+<%# end %>

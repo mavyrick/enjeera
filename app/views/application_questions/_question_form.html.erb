@@ -1,5 +1,5 @@
 <%= form_for [company, company.application_questions.new], url: company_application_questions_path(company) do |f| %>
-  <br/>
+  </br>
 <%= f.label "New Question" %>
 <%= f.text_field :question %>
   <%#= f.nested_fields_for :application_questions do |ff| %>

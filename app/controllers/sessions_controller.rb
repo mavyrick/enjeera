@@ -1,5 +1,13 @@
 class SessionsController < ApplicationController
 
+  def oauth2
+  end
+
+  def auth
+    client = LinkedIn::Client.new
+    client.authorize_from_access()
+  end
+
   def new
   end
 

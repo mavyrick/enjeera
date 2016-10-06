@@ -1,6 +1,6 @@
 <% if @company.picture.blank? == false %>
 <div>
-  <%= image_tag @company.picture.thumb.url %>
+  <%= image_tag @company.picture.profile.url %>
 </div>
 <% end %>
 
@@ -18,7 +18,7 @@
 <div>
   <%#= "#{@company.user.first_name} #{@company.user.last_name}"  %>
 <div>
-  <%= render partial: "users/show", locals: {user: @company.user} %>
+  <%#= render partial: "users/show", locals: {user: @company.user} %>
 </div>
 
 <% if can? :edit, @company %>

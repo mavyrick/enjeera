@@ -1,3 +1,5 @@
 class ApplicationAnswer < ApplicationRecord
-  belongs_to :application_questions
+  belongs_to :application_question
+  belongs_to :applying
+
 end

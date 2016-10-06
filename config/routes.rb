@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+get '/auth/:provider/callback', to: 'sessions#oauth2'
+
 resources :users
 
 resources :sessions, only: [:new, :create] do
@@ -28,7 +30,7 @@ end
 resources :home
 
 resources :companies do
-  resources :applyings, only: [:new, :create, :destroy, :index]
+  resources :applyings
   # resources :company_questions
   resources :application_questions do
     post :sort, on: :collection

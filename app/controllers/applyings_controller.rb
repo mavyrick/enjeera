@@ -18,18 +18,33 @@ class ApplyingsController < ApplicationController
   #   # @applying = @company.applying_for(current_user)
   # end
 
- def create
-   applying = current_user.applyings.new
-   company = Company.find params[:company_id]
-  #  applying_params = params.require(:applying).permit(:answer_field)
-   @Applying = Applying.create[:answer_field]
-   applying.company = company
-   if applying.save
-     redirect_to companies_path, notice: "Applied!"
-   else
-     redirect_to company, alert: "Can't Apply!"
-   end
- end
+  def create
+    company = Company.find params[:company_id]
+    applying = current_user.applyings.build
+
+    company.application_questions.each do |q|
+      applying.application_answers.build(answer: params["answer_#{q.id}"])
+    end
+
+    if applying.save
+      redirect_to companies_path, notice: "Applied!"
+    else
+      redirect_to company, alert: "Can't Apply!"
+    end
+  end
+
+ # def create
+ #   applying = current_user.applyings.new
+ #   company = Company.find params[:company_id]
+ #  #  applying_params = params.require(:applying).permit(:answer_field)
+ #   @Applying = Applying.create[:answer_field]
+ #   applying.company = company
+ #   if applying.save
+ #     redirect_to companies_path, notice: "Applied!"
+ #   else
+ #     redirect_to company, alert: "Can't Apply!"
+ #   end
+ # end
 
  def destroy
    applying = current_user.applyings.find params[:id]
