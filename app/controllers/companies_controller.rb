@@ -45,6 +45,13 @@ end
   end
 
   # def destroy
+  #   @company = Company.find params[:company_id]
+  #   @application_question = ApplicationQuestion.find params[:id]
+  #   @application_question.destroy
+  #   redirect_to company_application_questions_path(@application_question), notice: "Question Deleted"
+  # end
+
+  # def destroy
   #   company = Company.find params[:id]
   #   company.destroy
   #   redirect_to company_application_question_path

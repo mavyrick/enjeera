@@ -1,6 +1,14 @@
 class SessionsController < ApplicationController
 
   def oauth2
+    # render json: request.env['omniauth.auth']
+    omniauth_data = request.env['omniauth.auth']
+    user = User.where(provider: omniauth_data['provider'], uid: omniauth_data["uid"]).first
+    if user.nil?
+      user = User.create_from_linkedin(omniauth_data)
+    end
+    session[:user_id] = user.id
+    redirect_to user_path(user)
   end
 
   def auth

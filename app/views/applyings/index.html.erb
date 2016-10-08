@@ -8,23 +8,33 @@
 
 <% @applyings.each do |app| %>
 <%# 100.times do |num| %>
-  <% app.application_answers.each do |application_answer| %>
+
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
       <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="headingThree">
           <h4 class="panel-title">
-            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#<%= application_answer.id %>" aria-expanded="false" aria-controls="collapseThree">
-              This is a tagline.
+            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#<%= app.user_id %>" aria-expanded="false" aria-controls="collapseThree">
+              <%= app.user.user_name %>
+              <%= app.user.tagline %> TEST
+              <%#= link_to "View Profile", user_path(@user, app) %>
+              <%= link_to "Delete", company_applying_path(@company, app), method: :delete, data: {confirm: "Are you sure?"} %></h4>
             </a>
           </h4>
         </div>
-        <div id="<%= application_answer.id %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+        <div id="<%= app.user_id %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
           <div class="panel-body">
-            <%= application_answer.answer %>
+            <%# app.application_questions.each do |application_question| %>
+              <%#= application_question.question %>
+            <%# end %>
+              <% app.application_answers.each do |application_answer| %>
+              <div id='application_question'><%= application_answer.application_question.question %>:</div>
+              <br>
+              <%= application_answer.answer %>
+              <br>
+            <% end %>
           </div>
         </div>
       </div>
     </div>
-  <% end %>
 <% end %>
 <%# end %>

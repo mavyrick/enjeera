@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161006001640) do
+ActiveRecord::Schema.define(version: 20161008024604) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,19 +27,23 @@ ActiveRecord::Schema.define(version: 20161006001640) do
 
   create_table "application_questions", force: :cascade do |t|
     t.string   "question"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "company_id"
     t.integer  "position"
+    t.integer  "applying_id"
+    t.index ["applying_id"], name: "index_application_questions_on_applying_id", using: :btree
     t.index ["company_id"], name: "index_application_questions_on_company_id", using: :btree
   end
 
   create_table "applyings", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "company_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.text     "answer_field"
+    t.integer  "application_question_id"
+    t.index ["application_question_id"], name: "index_applyings_on_application_question_id", using: :btree
     t.index ["company_id"], name: "index_applyings_on_company_id", using: :btree
     t.index ["user_id"], name: "index_applyings_on_user_id", using: :btree
   end
@@ -78,24 +82,51 @@ ActiveRecord::Schema.define(version: 20161006001640) do
     t.index ["company_id"], name: "index_company_users_on_company_id", using: :btree
   end
 
+  create_table "user_profiles", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "location"
+    t.string   "description"
+    t.string   "image"
+    t.string   "headline"
+    t.string   "industry"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
     t.string   "password_digest"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.boolean  "site_admin"
-    t.boolean  "company_admin"
+    t.boolean  "company_admin",       default: false
     t.string   "company_name"
     t.text     "company_description"
     t.string   "user_name"
+    t.string   "tagline"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "location"
+    t.string   "description"
+    t.string   "image"
+    t.string   "headline"
+    t.string   "industry"
+    t.text     "linkedin_raw_info"
+    t.string   "linkedin_token"
+    t.string   "linkedin_secret"
+    t.string   "picture"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
   add_foreign_key "application_answers", "application_questions"
   add_foreign_key "application_answers", "applyings"
+  add_foreign_key "application_questions", "applyings"
   add_foreign_key "application_questions", "companies"
+  add_foreign_key "applyings", "application_questions"
   add_foreign_key "applyings", "companies"
   add_foreign_key "applyings", "users"
   add_foreign_key "companies", "company_users"

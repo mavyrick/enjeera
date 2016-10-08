@@ -29,57 +29,21 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'kaminari'
-
 gem 'bootstrap-sass', '~> 3.3.6'
-
 gem 'nested_form_fields'
-
 gem 'cancancan', '~> 1.15'
-
 gem 'nested_form', '~> 0.3.2'
-
 gem 'acts_as_list', '~> 0.8.2'
-
 gem 'jquery-ui-rails'
-
 gem 'therubyracer', '~> 0.12.2'
-
 gem 'carrierwave'
-
 gem 'mini_magick'
-
 gem "geocoder"
-
 gem 'underscore-rails'
-
 gem 'gmaps4rails'
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# gem 'oauth2', '~> 1.2'
-
-# gem "linkedin-oauth2", "~> 1.0"
-
-gem 'omniauth-linkedin-oauth2'
-
-# gem 'omniauth-oauth2', '~> 1.3.1'
-
-gem 'omniauth-oauth2', '~> 1.4'
-
-# gem 'omniauth'
-
-# gem 'omniauth-linkedin'
+gem "rails-erd"
+gem 'omniauth'
+gem 'omniauth-linkedin'
 
 # gem 'cocoon', '~> 1.2', '>= 1.2.9'
 

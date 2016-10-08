@@ -1,7 +1,7 @@
 <h1>Edit Company Profile</h1>
 
 <%= @company.errors.full_messages.join(", ") %>
-<%= form_for @company do |f| %>
+<%= form_for [@company, @user] do |f| %>
 <div>
   <%= f.label "Profile Picture" %>
   <%= f.file_field :picture %>
@@ -12,7 +12,7 @@
   </div>
   <div>
     <%= f.label "Tag Line" %>
-    <%= f.text_field :tag_line %>
+    <%= f.text_field :tagline %>
   </div>
   <div>
     <%= f.label "Company Description" %>

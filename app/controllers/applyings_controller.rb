@@ -8,7 +8,11 @@ class ApplyingsController < ApplicationController
   end
 
   def index
+    @company = Company.find params[:company_id]
     @applyings = Applying.order(created_at: :desc).page(params[:page]).per(10)
+    if current_user.company != @company
+      redirect_to root_path, notice: "access denied" and return
+    end
   end
 
   # def show
@@ -23,7 +27,9 @@ class ApplyingsController < ApplicationController
     applying = current_user.applyings.build
 
     company.application_questions.each do |q|
-      applying.application_answers.build(answer: params["answer_#{q.id}"])
+      applying.application_answers.build(application_question: q, answer: params["answer_#{q.id}"])
+      # q.application_answers.build(applying: applying, answer: params["answer_#{q.id}"])
+
     end
 
     if applying.save
@@ -47,8 +53,11 @@ class ApplyingsController < ApplicationController
  # end
 
  def destroy
-   applying = current_user.applyings.find params[:id]
-   applying.destroy
-   redirect_to applying.company, notice: "Application Cancelled"
+     @company = Company.find params[:company_id]
+     @applying = Applying.find params[:id]
+     @applying.destroy
+     redirect_to company_applyings_path(@company), notice: "Application Deleted"
+
+
  end
 end

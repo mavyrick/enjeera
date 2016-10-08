@@ -1,19 +1,31 @@
 Rails.application.routes.draw do
-  get 'company_questions/new'
-
-  get 'company_questions/edit'
-
-  get 'company_questions/show'
-
-  get 'company_questions/create'
-
-  get 'company_questions/update'
-
-  get 'company_questions/destroy'
+  # get 'company_questions/new'
+  #
+  # get 'company_questions/edit'
+  #
+  # get 'company_questions/show'
+  #
+  # get 'company_questions/create'
+  #
+  # get 'company_questions/update'
+  #
+  # get 'company_questions/destroy'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 get '/auth/:provider/callback', to: 'sessions#oauth2'
+
+get 'auth/linkedin', as: :sign_in_with_linkedin
+get 'auth/linkedin/callback' => 'callbacks#linkedin'
+
+# delete '/companies/:company_id/application_questions/', to: 'application_questions#destroy', as: :test2
+#
+# delete '/companies/:company_id/applyings/destroy', to: 'applyings#destroy'
+#
+# delete '/companies/:company_id/applyings/', to: 'applyings#destroy'
+#
+# delete '/companies/:company_id/applyings/:id', to: 'applyings#destroy', as: :test
+
 
 resources :users
 
