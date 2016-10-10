@@ -1,17 +1,35 @@
+<% if @user.picture.blank? == false %>
+<div id='user_image_show'>
+  <%= image_tag @user.picture.user_profile.url %>
+</div>
+<% end %>
 <!-- <img src="<%#= current_user.image %>"> -->
 
 <%#= link_to "Add LinkedIn Data", sign_in_with_linkedin_path %>
 
 <div>
-  <%= image_tag @user.picture.profile.url %>
+  <h1><%= @user.user_name %></h1>
+</div>
+<div>
+
+  <%#= image_tag @user.picture.profile.url %>
+</div>
+<br>
+<div>
+  <h3><%= @user.tagline %></h3>
+</div>
+<br>
+<div>
+  <b>Summary:</b>
+  <%= @user.summary %>
 </div>
 
-<%= link_to "Edit User Profile", edit_user_path(@user) %>
+<br>
+
+<div id="website">
+<h4><%= link_to "Linkedin Profile", (@user.link) %></h4>
+</div>
 
 <br>
-<%#= current_user.first_name %>
-<%#= current_user.last_name %>
-<br>
-<%#= current_user.email %>
-<br>
-<%#= current_user.location %>
+
+<%= link_to "Edit User Profile", edit_user_path(@user), :class => "btn btn-primary btn-lg" %>

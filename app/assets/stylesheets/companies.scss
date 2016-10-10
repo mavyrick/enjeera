@@ -2,10 +2,42 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#inner-wrapper {
+  padding: 10px;
+}
+
+#title {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+#title_tagline {
+  padding-right: 25px;
+  padding-left: 25px;
+  padding-bottom: 35px;
+}
+
 #company_image {
   float: left;
 }
 
 .row {
   // display: inline-block;
+}
+
+.company_image_show {
+  padding-right: 25px;
+  float: left;
+}
+
+#location {
+  text-align: center;
+}
+
+#profile_picture {
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 25px;
+  border: solid lightgrey 1px;
 }

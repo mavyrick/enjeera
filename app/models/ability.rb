@@ -7,6 +7,10 @@ class Ability
     company.user == user
   end
 
+  # cannot :manage, Company do |company|
+  #   company.user == user
+  # end
+
   # can :manage, Applying do |applying|
   #   company.user == user
   # end

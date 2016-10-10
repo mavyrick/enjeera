@@ -1,11 +1,9 @@
 <h1>All Application Questions for <%= @company.title %></h1>
 
-<h3>All questions</h3>
-
 <div id="application_questions">
 <% @company.application_questions.order(position: :asc).each do |application_question| %>
  <!-- <li><%#= a_q.question %></li> -->
- <h4 id="application_question_<%= application_question.id %>"><%= application_question.question %><%= link_to " Delete", company_application_question_path(@company, application_question), method: :delete, data: {confirm: "Are you sure?"} %></h4>
+<div id='question'><h4 id="application_question_<%= application_question.id %>"><%= application_question.question %><div id="delete_question"><%= link_to "Delete", company_application_question_path(@company, application_question), method: :delete, data: {confirm: "Are you sure?"} %></h4></div>
 
 <% end %>
 

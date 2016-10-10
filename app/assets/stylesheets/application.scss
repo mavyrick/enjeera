@@ -16,3 +16,20 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+#wrapper {
+  background-color: #F8F8F8;
+  padding: 25px;
+  margin: 25px;
+  border-radius: 15px;
+  border: solid lightgrey 1px;
+}
+
+#flash {
+  background-color: lightblue;
+  text-align: center;
+}
+
+#logout {
+  float: right;
+}

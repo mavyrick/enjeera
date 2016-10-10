@@ -1,3 +1,18 @@
 // Place all the styles related to the application_questions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#question {
+  cursor: move;
+  background-color: lightgrey;
+  border: solid black 1px;
+  display: block;
+  margin: 5px;
+  border-radius: 5px;
+  padding-left: 5px;
+}
+
+#delete_question {
+  float: right;
+  padding-right: 5px;
+}

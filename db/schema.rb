@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161008024604) do
+ActiveRecord::Schema.define(version: 20161010003023) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,8 +51,8 @@ ActiveRecord::Schema.define(version: 20161008024604) do
   create_table "companies", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.integer  "company_user_id"
     t.integer  "user_id"
     t.string   "picture"
@@ -60,7 +60,8 @@ ActiveRecord::Schema.define(version: 20161008024604) do
     t.string   "address"
     t.float    "longitude"
     t.float    "latitude"
-    t.boolean  "include_map"
+    t.boolean  "include_map",     default: false
+    t.string   "link"
     t.index ["company_user_id"], name: "index_companies_on_company_user_id", using: :btree
     t.index ["user_id"], name: "index_companies_on_user_id", using: :btree
   end
@@ -119,6 +120,8 @@ ActiveRecord::Schema.define(version: 20161008024604) do
     t.string   "linkedin_token"
     t.string   "linkedin_secret"
     t.string   "picture"
+    t.text     "summary"
+    t.string   "link"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 

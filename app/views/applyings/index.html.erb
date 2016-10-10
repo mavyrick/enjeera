@@ -5,7 +5,7 @@
 <%# end %>
 
   <%#= link_to app.answer_field, company_path(app) %>
-
+<div id="applications">
 <% @applyings.each do |app| %>
 <%# 100.times do |num| %>
 
@@ -14,10 +14,10 @@
         <div class="panel-heading" role="tab" id="headingThree">
           <h4 class="panel-title">
             <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#<%= app.user_id %>" aria-expanded="false" aria-controls="collapseThree">
-              <%= app.user.user_name %>
-              <%= app.user.tagline %> TEST
+              <b><%= app.user.user_name %> - </b>
+              <%= app.user.tagline %>
               <%#= link_to "View Profile", user_path(@user, app) %>
-              <%= link_to "Delete", company_applying_path(@company, app), method: :delete, data: {confirm: "Are you sure?"} %></h4>
+              <div id='delete_item'><%= link_to "Delete", company_applying_path(@company, app), method: :delete, data: {confirm: "Are you sure?"} %></h4>
             </a>
           </h4>
         </div>
@@ -32,9 +32,13 @@
               <%= application_answer.answer %>
               <br>
             <% end %>
+            <br>
+            <button type="button" class="btn btn-success">Accept Application</button>
+            <%= link_to "Delete", company_applying_path(@company, app), :class => "btn btn-danger", method: :delete, data: {confirm: "Are you sure?"} %>
           </div>
         </div>
       </div>
     </div>
 <% end %>
+</div>
 <%# end %>

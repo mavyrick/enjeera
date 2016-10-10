@@ -1,39 +1,60 @@
+<div id="inner-wrapper">
+
 <% if @company.picture.blank? == false %>
-<div id='company_image_show'>
-  <%= image_tag @company.picture.profile.url %>
+<!-- <div id='company_image_show'> -->
+  <%= image_tag @company.picture.company_profile.url, class: 'company_image_show' %>
 </div>
 <% end %>
 
-<div>
+<div id="title_tagline">
+<div id="title">
   <h1><%= @company.title %></h1>
 </div>
 
 <div>
-  <%= @company.tag_line %>
+  <h3><%= @company.tag_line %></h3>
+</div>
+</div>
+<div>
+
+<hr>
+
+  <b>About Us:</b>
+  <br>
+  <%= @company.description %>
 </div>
 
-<div>
-  About Us: <%= @company.description %>
+<br>
+
+<div id="website">
+<h4><%= link_to "Company Website", (@company.link) %></h4>
 </div>
+
 <div>
   <%#= "#{@company.user.first_name} #{@company.user.last_name}"  %>
 <div>
   <%#= render partial: "users/show", locals: {user: @company.user} %>
 </div>
+<br>
 
 <% if can? :edit, @company %>
-  <%= link_to "Edit Company Profile", edit_company_path(@company) %>
+  <%= link_to "Edit Company Profile", edit_company_path(@company), :class => "btn btn-primary btn-lg" %>
 <% end %>
 
 <% if @applying.present? && @applying.persisted? %>
-  <div id="applied">Applied</div>
+  <button type="button" class="btn btn-success btn-lg">Applied</button>
+  <!-- <div id="applied">Applied</div> -->
   <%# link_to "Unapply", company_applying_path(@company, @applying), method: :delete %>
 <% else %>
-  <%= link_to "Apply", new_company_applying_path(@company) %>
+  <%= link_to "Apply", new_company_applying_path(@company), :class => "btn btn-success btn-lg" %>
 <% end %>
 
+<hr>
+
 <% if @company.include_map == true %>
-<h2>Company Location</h2>
+<div id="location"><h2>Company Location</h2></div>
+
+<br>
 
 <div>
   <div id="map" style='height: 400px;'></div>
@@ -79,3 +100,5 @@ handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
 </script>
 
 <% end %>
+
+</div>

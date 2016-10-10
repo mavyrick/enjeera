@@ -15,8 +15,13 @@ class UsersController < ApplicationController
 
     def create
       if @user = User.setup(user_params, other_params)
+        # && @user.company_admin == false
         session[:user_id] = @user.id
-        redirect_to root_path, notice: "Logged In!"
+        redirect_to edit_user_path(current_user), notice: "Logged In!"
+      # elsif @user = User.setup(user_params, other_params)
+      #   # && @user.company_admin == true
+      #   session[:user_id] = @user.id
+      #   redirect_to edit_company_path(current_user.company), notice: "Logged In!"
       else
         @user = User.new
         render :new
@@ -38,7 +43,7 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:user_name, :first_name, :last_name, :tagline, :email,
-                                                :password, :password_confirmation, :picture, :location)
+                                                :password, :password_confirmation, :picture, :summary, :link)
     end
 
     def other_params

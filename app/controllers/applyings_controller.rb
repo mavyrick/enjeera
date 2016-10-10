@@ -9,7 +9,7 @@ class ApplyingsController < ApplicationController
 
   def index
     @company = Company.find params[:company_id]
-    @applyings = Applying.order(created_at: :desc).page(params[:page]).per(10)
+    @applyings = Applying.order(created_at: :desc).page(params[:page]).per(25)
     if current_user.company != @company
       redirect_to root_path, notice: "access denied" and return
     end

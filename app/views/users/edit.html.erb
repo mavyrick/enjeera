@@ -1,24 +1,28 @@
 <h1>Edit User Profile</h1>
 
-<%= link_to "Add LinkedIn Data", sign_in_with_linkedin_path %>
+<%#= link_to "Add LinkedIn Data", sign_in_with_linkedin_path %>
 
 <%= @user.errors.full_messages.join(", ") %>
 <%= form_for @user do |f| %>
 <div>
   <%= f.label "Profile Picture" %>
-  <%= f.file_field :image %>
+  <%= f.file_field :picture %>
 </div>
+  <!-- <div> -->
+    <%#= f.label "User Name" %>
+    <%#= f.text_field :user_name %>
+  <!-- </div> -->
   <div>
-    <%= f.label "User Name" %>
-    <%= f.text_field :user_name %>
-  </div>
-  <div>
-    <%= f.label "Tag Line" %>
+    <%= f.label "Tagline" %>
     <%= f.text_field :tagline %>
   </div>
   <div>
-    <%= f.label "Location" %>
-    <%= f.text_area :location %>
+    <%= f.label "Summary" %>
+    <%= f.text_area :summary %>
+  </div>
+  <div>
+    <%= f.label "LinkedIn Profile Link" %>
+    <%= f.text_field :link %>
   </div>
 
 <%= f.submit %>
