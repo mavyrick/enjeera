@@ -1,3 +1,19 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#apply-button {
+  position: relative;
+  bottom: 300px;
+  left: 300px;
+}
+
+body {
+  background-image: url("shadow_man.jpeg");
+  background-repeat: no-repeat;
+  alignment: center;
+}
+
+#welcome-header {
+  font-family: "Courier New";
+}

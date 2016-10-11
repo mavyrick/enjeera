@@ -42,9 +42,8 @@
 <% end %>
 
 <% if @applying.present? && @applying.persisted? %>
-  <button type="button" class="btn btn-success btn-lg">Applied</button>
+  <button type="button" class="btn btn-info btn-lg">Applied</button>
   <!-- <div id="applied">Applied</div> -->
-  <%# link_to "Unapply", company_applying_path(@company, @applying), method: :delete %>
 <% else %>
   <%= link_to "Apply", new_company_applying_path(@company), :class => "btn btn-success btn-lg" %>
 <% end %>

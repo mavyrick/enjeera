@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161010003023) do
+ActiveRecord::Schema.define(version: 20161010235610) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "accepted_applications", force: :cascade do |t|
+    t.integer  "applying_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "user_id"
+    t.integer  "company_id"
+    t.index ["applying_id"], name: "index_accepted_applications_on_applying_id", using: :btree
+    t.index ["company_id"], name: "index_accepted_applications_on_company_id", using: :btree
+    t.index ["user_id"], name: "index_accepted_applications_on_user_id", using: :btree
+  end
 
   create_table "application_answers", force: :cascade do |t|
     t.integer  "applying_id"
@@ -125,6 +136,9 @@ ActiveRecord::Schema.define(version: 20161010003023) do
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
+  add_foreign_key "accepted_applications", "applyings"
+  add_foreign_key "accepted_applications", "companies"
+  add_foreign_key "accepted_applications", "users"
   add_foreign_key "application_answers", "application_questions"
   add_foreign_key "application_answers", "applyings"
   add_foreign_key "application_questions", "applyings"

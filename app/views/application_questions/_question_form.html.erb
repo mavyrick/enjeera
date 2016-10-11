@@ -1,7 +1,13 @@
 <%= form_for [company, company.application_questions.new], url: company_application_questions_path(company) do |f| %>
   </br>
-<%= f.label "New Question" %>
-<%= f.text_field :question %>
+
+<form class="form-inline">
+  <div class="form-group">
+    <label for="exampleInputName2">New question</label>
+    <%= f.text_field :question, class: "form-control" %>
+  </div>
+  <%= f.submit "Add Question", class: "btn btn-primary" %>
+</form>
   <%#= f.nested_fields_for :application_questions do |ff| %>
     <%#= ff.remove_nested_fields_link %>
     <%#= ff.text_field :question %>
@@ -13,5 +19,4 @@
 
   <!-- <br/> -->
 
-  <%= f.submit "Add Question" %>
 <% end %>

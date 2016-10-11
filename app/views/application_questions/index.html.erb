@@ -1,4 +1,7 @@
-<h1>All Application Questions for <%= @company.title %></h1>
+<h1><u><center>All Application Questions for <%= @company.title %><center></u></h1>
+<h4><center>(Drag and Drop)</center></h4>
+
+<br>
 
 <div id="application_questions">
 <% @company.application_questions.order(position: :asc).each do |application_question| %>

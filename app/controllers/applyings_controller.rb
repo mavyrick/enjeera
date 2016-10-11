@@ -10,6 +10,7 @@ class ApplyingsController < ApplicationController
   def index
     @company = Company.find params[:company_id]
     @applyings = Applying.order(created_at: :desc).page(params[:page]).per(25)
+    # @accepted_application = @applying.accepted_application_for(current_user)
     if current_user.company != @company
       redirect_to root_path, notice: "access denied" and return
     end
@@ -25,15 +26,13 @@ class ApplyingsController < ApplicationController
   def create
     company = Company.find params[:company_id]
     applying = current_user.applyings.build
-
     company.application_questions.each do |q|
       applying.application_answers.build(application_question: q, answer: params["answer_#{q.id}"])
-      # q.application_answers.build(applying: applying, answer: params["answer_#{q.id}"])
-
+    q.application_answers.build(applying: applying, answer: params["answer_#{q.id}"])
     end
-
+    applying.company = company
     if applying.save
-      redirect_to companies_path, notice: "Applied!"
+      redirect_to company_path(company), notice: "Applied!"
     else
       redirect_to company, alert: "Can't Apply!"
     end
@@ -53,11 +52,10 @@ class ApplyingsController < ApplicationController
  # end
 
  def destroy
+    @applying = Applying.find params[:id]
      @company = Company.find params[:company_id]
-     @applying = Applying.find params[:id]
      @applying.destroy
      redirect_to company_applyings_path(@company), notice: "Application Deleted"
-
-
  end
+
 end

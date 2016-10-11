@@ -2,6 +2,13 @@
   <%#= f.label "Tagline" %>
   <%#= f.text_field :tagline %>
   <%#= f.label question.question.%>
-  <p><%= question.question %></p>
-  <%= ff.text_area :answer %>
+  <div class="form-group">
+    <label><%= question.question %></label>
+    <%= ff.text_area :answer, class: "form-control", rows: "2"%>
+  </div>
 </div>
+
+
+
+    <p><%#= question.question %></p>
+    <%#= ff.text_area :answer %>

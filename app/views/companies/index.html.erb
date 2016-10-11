@@ -1,18 +1,24 @@
 <h1>Companies</h1>
 
 <% @companies.each do |comp| %>
-  <div class="row">
+<div class="row">
+<div id="listing">
     <div class="col-sm-6 col-md-4">
+      <div id="info">
       <div class="thumbnail">
         <img id="company_image" src="<%= comp.picture.profile.url %>" alt="">
         <div class="caption">
+          <div id="text">
           <h3><%= link_to comp.title, company_path(comp) %></h3>
-          <p><%#= comp.user.tag_line %></p>
+          <p><%= comp.tag_line %></p>
           <!-- <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p> -->
+          </div>
+        </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 <% end %>
 
 <%= paginate @companies %>

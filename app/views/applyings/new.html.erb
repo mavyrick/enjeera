@@ -1,4 +1,4 @@
-<h1>Apply to <%= @company.title %></h1>
+<h1><center><u>Apply to <%= @company.title %></u></center></h1>
 
 <% if @applying.errors.any? %>
   <ul>
@@ -11,9 +11,10 @@
 <%= form_tag(company_applyings_path(@company), method: :post) do %>
 
   <% @company.application_questions.each do |question| %>
-    <%= question.question %>
-    <%= text_area_tag "answer_#{question.id}" %>
-    <br/>
+    <%#= question.question %>
+    <label><%= question.question %></label>
+    <%= text_area "answer_#{question.id}", class: "form-control", rows: "2"%>
+  </br>
   <% end %>
 
   <%= submit_tag %>

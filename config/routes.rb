@@ -42,7 +42,9 @@ end
 resources :home
 
 resources :companies do
-  resources :applyings
+  resources :applyings do
+    resources :accepted_applications
+  end
   # resources :company_questions
   resources :application_questions do
     post :sort, on: :collection
