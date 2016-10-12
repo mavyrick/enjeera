@@ -2,18 +2,64 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#apply-button {
-  position: relative;
-  bottom: 300px;
-  left: 300px;
-}
+// #apply-button {
+//   position: relative;
+//   bottom: 300px;
+//   left: 300px;
+// }
 
 body {
-  background-image: url("shadow_man.jpeg");
-  background-repeat: no-repeat;
-  alignment: center;
+  background-image: url("/man-with-shadow.jpg");
+  background-repeat: repeat-y;
+  background-size: 100%;
 }
 
 #welcome-header {
   font-family: "Courier New";
+  font-size: 75px;
+  color: #F8F8F8;
+  margin-top: 75px;
+}
+
+#info {
+  font-family: "Courier New";
+  color: #F8F8F8;
+  padding: 50px;
+  text-align: center;
+  line-height: 45px;
+
+}
+
+.button {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    padding: 20px 35px;
+    border: 1px solid #aeaeae;
+    border-radius: 100px;
+    background: #f8f8f8;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#aeaeae));
+    background: -moz-linear-gradient(top, #f8f8f8, #aeaeae);
+    background: linear-gradient(to bottom, #f8f8f8, #aeaeae);
+    text-shadow: #ffffff 1px 1px 1px;
+    font: normal normal bold 35px georgia;
+    color: #808080;
+    text-decoration: none;
+    margin-top: 25px;
+}
+.button:hover,
+.button:focus {
+    border: 1px solid #f8f8f8;
+    background: #ffffff;
+    background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#d1d1d1));
+    background: -moz-linear-gradient(top, #ffffff, #d1d1d1);
+    background: linear-gradient(to bottom, #ffffff, #d1d1d1);
+    color: #808080;
+    text-decoration: none;
+}
+.button:active {
+    background: #aeaeae;
+    background: -webkit-gradient(linear, left top, left bottom, from(#aeaeae), to(#aeaeae));
+    background: -moz-linear-gradient(top, #aeaeae, #aeaeae);
+    background: linear-gradient(to bottom, #aeaeae, #aeaeae);
 }

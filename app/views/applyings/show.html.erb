@@ -1,1 +1,18 @@
-<h1>Application Status</h1>
+<h1><center><u>Accepted Applications</u></center></h1>
+
+<br>
+
+<% @applyings.each do |app| %>
+
+  <% if app.accepted == false %>
+    <% next %>
+  <% end %>
+
+<div id="company-title">
+<h3><%= app.company.title %></h3>
+<h5><%= app.company.user.email %></h5>
+</div>
+
+<br>
+
+<% end %>

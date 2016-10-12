@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161010235610) do
+ActiveRecord::Schema.define(version: 20161012002859) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,8 @@ ActiveRecord::Schema.define(version: 20161010235610) do
     t.datetime "updated_at",              null: false
     t.text     "answer_field"
     t.integer  "application_question_id"
+    t.string   "aasm_state"
+    t.boolean  "accepted"
     t.index ["application_question_id"], name: "index_applyings_on_application_question_id", using: :btree
     t.index ["company_id"], name: "index_applyings_on_company_id", using: :btree
     t.index ["user_id"], name: "index_applyings_on_user_id", using: :btree

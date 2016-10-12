@@ -1,22 +1,25 @@
+<div id="inner-wrapper">
+
 <% if @user.picture.blank? == false %>
 <div id='user_image_show'>
-  <%= image_tag @user.picture.user_profile.url %>
+  <%= image_tag @user.picture.user_profile.url, class: "user_image_show" %>
 </div>
 <% end %>
 <!-- <img src="<%#= current_user.image %>"> -->
 
 <%#= link_to "Add LinkedIn Data", sign_in_with_linkedin_path %>
 
-<div>
+<div id="title_tagline">
+<div id="title">
   <h1><%= @user.user_name %></h1>
 </div>
-<div>
+<!-- <div>
 
   <%#= image_tag @user.picture.profile.url %>
-</div>
-<br>
+</div> -->
 <div>
   <h3><%= @user.tagline %></h3>
+</div>
 </div>
 <br>
 <div>

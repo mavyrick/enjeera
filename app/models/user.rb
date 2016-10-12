@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   has_many :accepted_applications, dependent: :destroy
   has_many :accepted_applyings, through: :accepted_applications, source: :applying
 
-  validates :password, presence: true, unless: :from_oauth?
+  validates :password, presence: true, :on => :create
 
   validates :first_name, presence: true
 

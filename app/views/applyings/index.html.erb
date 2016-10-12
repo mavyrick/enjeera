@@ -33,10 +33,10 @@
               <br>
             <% end %>
             <br>
-            <% if @accepted_application.present? && @accepted_application.persisted? %>
-              <%= link_to "Application Accepted", company_applying_accepted_application_path(@applying, @accepted_application), method: :delete, class: "btn btn-info"%>
+            <% if app.accepted == true %>
+              <%= link_to "Application Accepted", company_applying_path(@company, app), method: :delete, class: "btn btn-info"%>
             <% else %>
-              <%= link_to "Accept Application", company_applying_accepted_applications_path(@applying), method: :post, class: "btn btn-success" %>
+              <%= link_to "Accept Application", company_applyings_status_change_path(@company, app), method: :post, class: "btn btn-success" %>
             <% end %>
             <%= link_to "Delete", company_applying_path(@company, app), :class => "btn btn-danger", method: :delete, data: {confirm: "Are you sure?"} %>
           </div>

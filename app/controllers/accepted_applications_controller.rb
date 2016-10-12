@@ -7,9 +7,9 @@ class AcceptedApplicationsController < ApplicationController
      applying      = Applying.find params[:applying_id]
      accepted_application.applying = applying
      if accepted_application.save
-       redirect_to applyings_path, notice: "Application accepted!"
+       redirect_to company_applyings_path(applying.company), notice: "Application accepted!"
      else
-       redirect_to applyings_path, alert: "Can't accept!"
+       redirect_to company_applyings_path(applying.company), alert: "Can't accept!"
      end
    end
 

@@ -26,6 +26,7 @@ get 'auth/linkedin/callback' => 'callbacks#linkedin'
 #
 # delete '/companies/:company_id/applyings/:id', to: 'applyings#destroy', as: :test
 
+post '/companies/:company_id/applyings/status_change/:id', to: 'applyings#status_change', as: :company_applyings_status_change
 
 resources :users
 

@@ -8,8 +8,9 @@ class ApplyingsController < ApplicationController
   end
 
   def index
+
     @company = Company.find params[:company_id]
-    @applyings = Applying.order(created_at: :desc).page(params[:page]).per(25)
+    @applyings = @company.applyings.order(created_at: :desc).page(params[:page]).per(25)
     # @accepted_application = @applying.accepted_application_for(current_user)
     if current_user.company != @company
       redirect_to root_path, notice: "access denied" and return
@@ -38,6 +39,15 @@ class ApplyingsController < ApplicationController
     end
   end
 
+  def update
+    @applying = Applying.find params[:id]
+    if @applying.update(accepted: true)
+      redirect_to applying_path(@applying), notice: "Application accepted"
+    else
+      redirect_to applying_path, alert: "Can't accept!"
+    end
+  end
+
  # def create
  #   applying = current_user.applyings.new
  #   company = Company.find params[:company_id]
@@ -56,6 +66,29 @@ class ApplyingsController < ApplicationController
      @company = Company.find params[:company_id]
      @applying.destroy
      redirect_to company_applyings_path(@company), notice: "Application Deleted"
+ end
+
+ def status_change
+    @applying = Applying.find params[:id]
+
+    if @applying.accepted == 'Not Done'
+      @applying.accepted = 'Done'
+    elsif @applying.accepted == 'Done'
+      @applying.accepted = 'Not Done'
+    else
+      @applying.accepted = 'Not Done'
+    end
+
+    @applying.save
+
+    redirect_to company_applyings_path
+
+ end
+
+ def show
+
+   @user = current_user
+   @applyings = @user.applyings.order(created_at: :desc).page(params[:page]).per(25)
  end
 
 end
