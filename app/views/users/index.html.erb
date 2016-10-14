@@ -1,19 +1,19 @@
-<h1>Users</h1>
+<h1><center><u>Users</u></center></h1>
 
+<br>
+
+<div class="row">
 <% @users.each do |user| %>
-  <div class="row">
-    <div class="col-sm-6 col-md-4">
+    <div class="col-sm-6 col-md-6">
       <div class="thumbnail">
-        <img src="<%= user.picture.profile.url %>">
+        <img id="user-picture" src="<%= user.picture.profile.url %>">
         <div class="caption">
           <h3><%= link_to user.user_name, user_path(user) %></h3>
           <p><%=user.tagline%></p>
-          <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
         </div>
       </div>
     </div>
-  </div>
-  <hr>
 <% end %>
+</div>
 
-<%= paginate @users %>
+<div class="paginate"><%= paginate @users %></div>

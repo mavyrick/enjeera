@@ -1,0 +1,20 @@
+<h1><center><u>Accepted Applications</u></center></h1>
+
+<br>
+
+<% @applications.each do |app| %>
+
+  <% if app.accepted == false %>
+    <% next %>
+  <% end %>
+
+<div id='title_wrapper'>
+<div id="company-title">
+  <h3><%= link_to app.company.title, company_path(app.company) %></h3>
+  <h5><%= app.company.user.email %></h5>
+</div>
+</div>
+
+<br>
+
+<% end %>

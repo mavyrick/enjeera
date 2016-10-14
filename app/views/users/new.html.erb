@@ -1,4 +1,6 @@
-<h1>Sign Up</h1>
+<h1><center><u>Sign Up</u></center></h1>
+
+<br>
 
 <% if @user.errors.any? %>
   <ul>
@@ -13,45 +15,65 @@
     <%= f.label :type %>
     <%= f.select :company_admin,
         :selection => ["User", "Company"] %>
+
+    <br>
+
   </div>
   <div id="company_name">
     <%= f.label :company_name %>
-    <%= f.text_field :company_name %>
+    <%= f.text_field :company_name, class: "form-control" %>
   </div>
+
+  <br>
   <!-- <div id="company_description"> -->
     <%#= f.label :company_description %>
     <%#= f.text_field :company_description %>
   <!-- </div> -->
   <div id="user_name">
     <%= f.label :user_name %>
-    <%= f.text_field :user_name %>
+    <%= f.text_field :user_name, class: "form-control" %>
 
   </div>
+
+  <br>
   <div>
     <%= f.label :first_name %>
-    <%= f.text_field :first_name %>
+    <%= f.text_field :first_name, class: "form-control" %>
   </div>
+
+  <br>
   <div>
     <%= f.label :last_name %>
-    <%= f.text_field :last_name %>
+    <%= f.text_field :last_name, class: "form-control" %>
   </div>
+
+  <br>
   <!-- <div> -->
     <%#= f.label :tagline %>
     <%#= f.text_field :tagline %>
   <!-- </div> -->
   <div>
     <%= f.label :email %>
-    <%= f.email_field :email %>
+    <%= f.email_field :email, class: "form-control" %>
   </div>
+
+  <br>
+
   <div>
     <%= f.label :password %>
-    <%= f.password_field :password %>
+    <%= f.password_field :password, class: "form-control" %>
   </div>
+
+<br>
+
   <div>
     <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
+    <%= f.password_field :password_confirmation, class: "form-control" %>
   </div>
-  <%= f.submit %>
+
+  <br>
+
+  <%= f.submit class: "btn btn-primary btn-lg" %>
 <% end %>
 
 <script>

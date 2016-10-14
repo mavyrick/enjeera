@@ -1,10 +1,12 @@
-<h1>Companies</h1>
+<h1><center><u>Companies</u></center></h1>
 
-<% @companies.each do |comp| %>
+<br>
+
 <div class="row">
+<% @companies.each do |comp| %>
 <div id="listing">
-    <div class="col-sm-6 col-md-4">
-      <div id="info">
+    <div class="col-sm-6 col-md-6">
+      <!-- <div id="info"> -->
       <div class="thumbnail">
         <img id="company_image" src="<%= comp.picture.profile.url %>" alt="">
         <div class="caption">
@@ -15,10 +17,10 @@
           </div>
         </div>
         </div>
-      </div>
+      <!-- </div> -->
     </div>
   </div>
-</div>
 <% end %>
+</div>
 
-<%= paginate @companies %>
+<div class="paginate"><%= paginate @companies %></div>

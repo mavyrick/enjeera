@@ -45,6 +45,7 @@ gem "rails-erd"
 gem 'omniauth'
 gem 'omniauth-linkedin'
 gem 'aasm'
+gem 'faker'
 
 # gem 'cocoon', '~> 1.2', '>= 1.2.9'
 

@@ -1,5 +1,7 @@
 <h1><center><u>Apply to <%= @company.title %></u></center></h1>
 
+<br>
+
 <% if @applying.errors.any? %>
   <ul>
     <% @applying.errors.full_messages.each do |msg| %>
@@ -13,11 +15,13 @@
   <% @company.application_questions.each do |question| %>
     <%#= question.question %>
     <label><%= question.question %></label>
-    <%= text_area "answer_#{question.id}", class: "form-control", rows: "2"%>
+    <%= text_area_tag "answer_#{question.id}", "", class: "form-control", rows: "2" %>
+    <!-- <textarea class="form-control" rows="3"></textarea> -->
   </br>
   <% end %>
 
-  <%= submit_tag %>
+  <%#= submit_tag %>
+  <button type="submit" class="btn btn-primary btn-lg">Send Appplication</button>
 <% end %>
 
 <%# form_for [@company, @applying] do |f| %>

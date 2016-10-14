@@ -44,6 +44,11 @@ end
     redirect_to company_path(@company)
   end
 
+  def application_status
+    @user = current_user
+    @applications = @user.applyings.order(created_at: :desc).page(params[:page]).per(25)
+  end
+
   # def destroy
   #   @company = Company.find params[:company_id]
   #   @application_question = ApplicationQuestion.find params[:id]

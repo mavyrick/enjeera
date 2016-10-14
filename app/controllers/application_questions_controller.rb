@@ -8,7 +8,6 @@ class ApplicationQuestionsController < ApplicationController
     end
     @application_questions = @company.application_questions
     @application_questions = ApplicationQuestion.order(:position)
-    # @application_questions = ApplicationQuestion.all
   end
 
   def new
@@ -30,7 +29,6 @@ class ApplicationQuestionsController < ApplicationController
       flash[:alert] = "cannot create!"
       render :index
     end
-
   end
 
   def update
@@ -58,7 +56,6 @@ class ApplicationQuestionsController < ApplicationController
   private
 
     def application_question_params
-      # params.require(:application_question).permit( application_questions_attributes: [:question, :answer, :_destroy, :id])
       params.require(:application_question).permit(:question, :answer, :_destroy, :id)
     end
 
