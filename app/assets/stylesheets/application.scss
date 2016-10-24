@@ -17,6 +17,13 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+body {
+  background-image: url("/man-with-shadow.jpg");
+  background-repeat: repeat-y;
+  background-size: 100%;
+  padding-top: 70px;
+}
+
 #wrapper {
   background-color: #F8F8F8;
   padding: 25px;

@@ -47,6 +47,9 @@ end
   def application_status
     @user = current_user
     @applications = @user.applyings.order(created_at: :desc).page(params[:page]).per(25)
+    # if current_user != @company
+    #   redirect_to root_path, notice: "access denied" and return
+    # end
   end
 
   # def destroy
