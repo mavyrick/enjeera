@@ -20,7 +20,9 @@
 body {
   background-image: url("/man-with-shadow.jpg");
   background-repeat: repeat-y;
+  background-attachment: fixed;
   background-size: 100%;
+  background-position-y: -45px;
   padding-top: 50px;
 }
 
@@ -30,7 +32,8 @@ body {
   margin: 25px;
   border-radius: 15px;
   border: solid lightgrey 1px;
-  background:rgba(248,248,248,0.90);
+  // background:rgba(248,248,248,0.90);
+  background:rgba(242, 242, 242, 0.90);
 }
 
 #flash {
@@ -51,4 +54,8 @@ body {
 
 .paginate {
   size: 25px;
+}
+
+.navbar {
+  border-bottom: solid lightgrey 1px;
 }
