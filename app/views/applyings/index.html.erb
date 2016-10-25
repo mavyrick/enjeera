@@ -33,9 +33,7 @@
               <%= application_answer.answer %>
             </div>
               <br>
-              <br>
             <% end %>
-            <br>
             <% if app.accepted == true %>
               <%= link_to "Application Accepted", company_applying_path(@company, app), method: :delete, class: "btn btn-info"%>
             <% else %>
