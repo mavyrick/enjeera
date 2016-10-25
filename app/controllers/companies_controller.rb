@@ -35,6 +35,9 @@ end
 
   def edit
     @company = Company.find params[:id]
+    if current_user.company != @company
+      redirect_to root_path, notice: "access denied" and return
+    end
   end
 
   def update
@@ -47,9 +50,9 @@ end
   def application_status
     @user = current_user
     @applications = @user.applyings.order(created_at: :desc).page(params[:page]).per(25)
-    # if current_user != @company
-    #   redirect_to root_path, notice: "access denied" and return
-    # end
+    if current_user != @user
+      redirect_to root_path, notice: "access denied" and return
+    end
   end
 
   # def destroy

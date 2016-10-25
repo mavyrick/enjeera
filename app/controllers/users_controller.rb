@@ -30,6 +30,9 @@ class UsersController < ApplicationController
 
     def edit
       @user = User.find params[:id]
+      if current_user != @user
+        redirect_to root_path, notice: "access denied" and return
+      end
     end
 
     def update
