@@ -26,6 +26,7 @@
             <%# app.application_questions.each do |application_question| %>
               <%#= application_question.question %>
             <%# end %>
+            <div id="question-answer">
               <% app.application_answers.each do |application_answer| %>
               <div id='application_question'><%= application_answer.application_question.question %>:</div>
               <br>
@@ -33,6 +34,7 @@
               <br>
               <br>
             <% end %>
+          </div>
             <br>
             <% if app.accepted == true %>
               <%= link_to "Application Accepted", company_applying_path(@company, app), method: :delete, class: "btn btn-info"%>
