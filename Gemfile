@@ -48,6 +48,8 @@ gem 'aasm'
 gem 'faker'
 gem 'aasm'
 
+gem 'rails_12factor', group: :production
+
 # gem 'cocoon', '~> 1.2', '>= 1.2.9'
 
 group :development, :test do
