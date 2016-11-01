@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 20161012002859) do
     t.integer  "company_id"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
-    t.text     "answer_field"
+    t.text     "answer"
     t.integer  "application_question_id"
     t.string   "aasm_state"
     t.boolean  "accepted"
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(version: 20161012002859) do
     t.string   "company_name"
     t.integer  "company_id"
     t.index ["company_id"], name: "index_company_users_on_company_id", using: :btree
+    t.index ["email"], name: "index_company_users_on_email", unique: true, using: :btree
   end
 
   create_table "user_profiles", force: :cascade do |t|
