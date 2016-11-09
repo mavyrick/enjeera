@@ -11,5 +11,5 @@
 # end
 
 25.times do
-  User.create!(company_admin: false, email: Faker::Internet.email, password: "12345", password_digest: "12345", user_name: Faker::Internet.user_name, first_name: "John", last_name: "Doe", tagline: Faker::Lorem.sentence, summary: Faker::Lorem.paragraphs)
+  User.create!(company_admin: false, email: Faker::Internet.email, password: '12345', password_digest: '12345', user_name: Faker::Internet.user_name, first_name: 'John', last_name: 'Doe', tagline: Faker::Lorem.sentence, summary: Faker::Lorem.paragraphs)
 end

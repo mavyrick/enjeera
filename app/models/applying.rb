@@ -13,5 +13,4 @@ class Applying < ApplicationRecord
   def accepted_application_for(user)
     accepted_applications.find_by_user_id(user)
   end
-
 end

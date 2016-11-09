@@ -1,5 +1,4 @@
 class Company < ApplicationRecord
-
   mount_uploader :picture, AvatarUploader
 
   belongs_to :user
@@ -20,5 +19,4 @@ class Company < ApplicationRecord
   after_validation :geocode
 
   # accepts_nested_attributes_for(:application_questions)
-
 end

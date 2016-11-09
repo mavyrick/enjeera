@@ -1,5 +1,4 @@
 class CompanyUsersController < ApplicationController
-
   def new
     @company_user = CompanyUser.new
     @company = Company.new
@@ -12,7 +11,7 @@ class CompanyUsersController < ApplicationController
     @company.save
     if @company_user.save
       session[:company_user_id] = @company_user.id
-      redirect_to company_path(@company), notice: "Logged In!"
+      redirect_to company_path(@company), notice: 'Logged In!'
     else
       render :new
     end
@@ -27,6 +26,4 @@ class CompanyUsersController < ApplicationController
   # def company_params
   #   params.require(:company).permit(:company_name)
   # end
-
-
 end

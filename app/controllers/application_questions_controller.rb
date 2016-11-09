@@ -4,7 +4,7 @@ class ApplicationQuestionsController < ApplicationController
   def index
     @company = Company.find params[:company_id]
     if current_user.company != @company
-      redirect_to root_path, notice: "access denied" and return
+      redirect_to(root_path, notice: 'access denied') && return
     end
     @application_questions = @company.application_questions
     @application_questions = ApplicationQuestion.order(:position)
@@ -24,9 +24,9 @@ class ApplicationQuestionsController < ApplicationController
     @application_question = @company.application_questions.new application_question_params
     @application_question.company = @company
     if @application_question.save
-      redirect_to company_application_questions_path(@company), notice: "Company application questions created!"
+      redirect_to company_application_questions_path(@company), notice: 'Company application questions created!'
     else
-      flash[:alert] = "cannot create!"
+      flash[:alert] = 'cannot create!'
       render :index
     end
   end
@@ -35,7 +35,7 @@ class ApplicationQuestionsController < ApplicationController
     @company = current_user.company
     @application_question = ApplicationQuestion.find params[:id]
     @application_question.update application_question_params
-    flash[:notice] = "Company application questions updated!"
+    flash[:notice] = 'Company application questions updated!'
     redirect_to company_application_questions_path(@company)
   end
 
@@ -43,7 +43,7 @@ class ApplicationQuestionsController < ApplicationController
     @company = Company.find params[:company_id]
     @application_question = ApplicationQuestion.find params[:id]
     @application_question.destroy
-    redirect_to company_application_questions_path(), notice: "Question Deleted"
+    redirect_to company_application_questions_path, notice: 'Question Deleted'
   end
 
   def sort
@@ -55,8 +55,7 @@ class ApplicationQuestionsController < ApplicationController
 
   private
 
-    def application_question_params
-      params.require(:application_question).permit(:question, :answer, :_destroy, :id)
-    end
-
+  def application_question_params
+    params.require(:application_question).permit(:question, :answer, :_destroy, :id)
+  end
 end

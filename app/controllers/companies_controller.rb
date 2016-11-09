@@ -1,5 +1,4 @@
 class CompaniesController < ApplicationController
-
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
@@ -15,7 +14,7 @@ class CompaniesController < ApplicationController
     @company = Company.create company_params
 
     if @company.save
-      flash[:notice] = "Company created successfully"
+      flash[:notice] = 'Company created successfully'
       redirect_to company_path(@company)
     else
       render :new
@@ -29,21 +28,20 @@ class CompaniesController < ApplicationController
     @hash = Gmaps4rails.build_markers(@companies) do |company, marker|
       marker.lat company.latitude
       marker.lng company.longitude
-end
-
+    end
   end
 
   def edit
     @company = Company.find params[:id]
     if current_user.company != @company
-      redirect_to root_path, notice: "access denied" and return
+      redirect_to(root_path, notice: 'access denied') && return
     end
   end
 
   def update
     @company = Company.find params[:id]
     @company.update company_params
-    flash[:notice] = "Company profile editted successfully"
+    flash[:notice] = 'Company profile editted successfully'
     redirect_to company_path(@company)
   end
 
@@ -51,7 +49,7 @@ end
     @user = current_user
     @applications = @user.applyings.order(created_at: :desc).page(params[:page]).per(25)
     if current_user != @user
-      redirect_to root_path, notice: "access denied" and return
+      redirect_to(root_path, notice: 'access denied') && return
     end
   end
 
@@ -74,8 +72,7 @@ end
 
   private
 
-    def company_params
-      params.require(:company).permit(:title, :tag_line, :description, :company_description, :picture, :link, :include_map, :latitude, :longitude)
-    end
-
+  def company_params
+    params.require(:company).permit(:title, :tag_line, :description, :company_description, :picture, :link, :include_map, :latitude, :longitude)
+  end
 end

@@ -2,11 +2,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def authenticate_user!
-    redirect_to new_session_path, notice: "Please sign in" unless user_signed_in?
+    redirect_to new_session_path, notice: 'Please sign in' unless user_signed_in?
   end
 
   def authenticate_company_user!
-    redirect_to new_company_session_path, notice: "Please sign in" unless company_user_signed_in?
+    redirect_to new_company_session_path, notice: 'Please sign in' unless company_user_signed_in?
   end
 
   def signed_in?
@@ -33,5 +33,4 @@ class ApplicationController < ActionController::Base
     @current_company_user ||= CompanyUser.find_by_id session[:company_user_id]
   end
   helper_method :current_company_user
-
 end
