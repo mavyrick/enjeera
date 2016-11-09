@@ -46,7 +46,6 @@ gem 'omniauth'
 gem 'omniauth-linkedin'
 gem 'aasm'
 gem 'faker'
-gem 'aasm'
 
 gem 'rails_12factor', group: :production
 
@@ -55,6 +54,7 @@ gem 'rails_12factor', group: :production
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'rubocop'
 end
 
 group :development do
