@@ -33,46 +33,46 @@
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
-      <!-- <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li> -->
       <li><%= link_to "View Companies", companies_path %></li>
       <li><%= link_to "View Users", users_path %></li>
       <% if user_signed_in? %>
         <% if current_user.company_admin %>
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile<span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><%#= link_to "Application Questions", company_application_question_path %></li>
-          <li><%= link_to "Company Profile", company_path(current_user.company) %></li>
-          <li><%= link_to "Edit Company Profile", edit_company_path(current_user.company) %></li>
-        </ul>
-      </li>
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Applications<span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><%= link_to "View Applications", company_applyings_path(current_user.company) %></li>
-          <li><%= link_to "Edit Application Questions", company_application_questions_path(current_user.company) %></li>
-        </ul>
-      </li>
-      <% else %>
-      <li><%= link_to "Application Status", application_status_path %></li>
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile<span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><%= link_to "My Profile", user_path(current_user) %></li>
-          <li><%= link_to "Edit Profile", edit_user_path(current_user) %></li>
-          <li><%#= link_to "View Companies Applied To", company_application_questions_path(current_user.company) %></li>
-        </ul>
-      </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Company Profile", company_path(current_user.company) %></li>
+              <li><%= link_to "Edit Company Profile", edit_company_path(current_user.company) %></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Applications<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "View Applications", company_applyings_path(current_user.company) %></li>
+              <li><%= link_to "Edit Application Questions", company_application_questions_path(current_user.company) %></li>
+            </ul>
+          </li>
+        <% else %>
+          <li><%= link_to "Application Status", application_status_path %></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "My Profile", user_path(current_user) %></li>
+              <li><%= link_to "Edit Profile", edit_user_path(current_user) %></li>
+            </ul>
+          </li>
+        <% end %>
+        <li>
+          <%= link_to "Logout", sessions_path, method: :delete,
+                data: {confirm: "are you sure you want to log out?"} %>
+        </li>
       <% end %>
-      <li><%= link_to "Logout", sessions_path, method: :delete,
-      data: {confirm: "are you sure you want to log out?"}%></li>
     </ul>
-    <% else %>
 
-    <ul class="nav navbar-nav navbar-right">
-      <li><%= link_to "Login", new_session_path %></li>
-      <li><%= link_to "Sign Up", new_user_path %></li>
-    </ul>
+    <% if !user_signed_in? %>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Login", new_session_path %></li>
+        <li><%= link_to "Sign Up", new_user_path %></li>
+      </ul>
     <% end %>
   </div><!-- /.navbar-collapse -->
 </div><!-- /.container-fluid -->
